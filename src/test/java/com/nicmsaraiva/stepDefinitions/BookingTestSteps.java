@@ -2,7 +2,6 @@ package com.nicmsaraiva.stepDefinitions;
 
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 

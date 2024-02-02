@@ -7,7 +7,7 @@ import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
-public class BookingTestSteps {
+public class GetBookingTestSteps {
     String BASE_URL = "https://restful-booker.herokuapp.com";
     Response response;
 

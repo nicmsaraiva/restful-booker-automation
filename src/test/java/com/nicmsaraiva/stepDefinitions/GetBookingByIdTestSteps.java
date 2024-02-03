@@ -13,14 +13,16 @@ import static org.junit.Assert.assertTrue;
 public class GetBookingByIdTestSteps {
     Response response;
     String id = "1";
+    String idInvalid = "213414";
 
     @Dado("que eu faça uma requisição para o endpoint \\/booking\\/id passando o ID da reserva")
     public void que_eu_faça_uma_requisição_para_o_endpoint_booking_id_passando_o_id_da_reserva() {
-        response = given()
-                .baseUri("https://restful-booker.herokuapp.com/booking/")
-                .contentType(ContentType.JSON)
-                .when()
-                .get(id);
+        response =
+                given()
+                        .baseUri("https://restful-booker.herokuapp.com/booking/")
+                        .contentType(ContentType.JSON)
+                        .when()
+                        .get(id);
     }
 
     @Então("o sistema deve retornar o status OK")
@@ -42,5 +44,21 @@ public class GetBookingByIdTestSteps {
         assertEquals(Integer.valueOf(343), totalPrice);
         assertTrue(depositPaid);
 
+    }
+
+    @Dado("que eu faça uma requisição para o endpoint \\/booking\\/id passando um ID sem cadastro")
+    public void que_eu_faça_uma_requisição_para_o_endpoint_booking_id_passando_um_id_sem_cadastro() {
+        response =
+                given()
+                        .basePath("")
+                        .contentType(ContentType.JSON)
+                        .when()
+                        .get(idInvalid);
+    }
+    @Então("o sistema deve retornar o status Not Found")
+    public void o_sistema_deve_retornar_o_status_not_found() {
+        response
+                .then()
+                .statusCode(400);
     }
 }

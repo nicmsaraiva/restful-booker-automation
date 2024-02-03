@@ -11,4 +11,8 @@ Funcionalidade: Booking - GetBooking
       | depositpaid  | true                                     |
       | bookingdates | checkin: 2015-06-13, checkout:2018-04-15 |
 
+  Cenário: Obter uma reserva sem cadastro
+    Dado que eu faça uma requisição para o endpoint /booking/id passando um ID sem cadastro
+    Então o sistema deve retornar o status Not Found
+
 

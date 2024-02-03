@@ -1,5 +1,5 @@
 #language: pt
-  @CriarToken
+@e2e
   Funcionalidade: Autenticação com Token OAuth
     Cenário: Autenticação bem sucedida
       Quando eu faço uma solicitação POST para /auth com as credenciais válidas

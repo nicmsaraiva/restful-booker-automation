@@ -1,6 +1,6 @@
 #language: pt
+@e2e
 Funcionalidade: Booking - GetBooking
-
   Cenário: Obter uma reserva pelo id cadastrado
     Dado que eu faça uma requisição para o endpoint /booking/id passando o ID da reserva
     Então o sistema deve retornar o status OK

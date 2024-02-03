@@ -1,5 +1,5 @@
 #language: pt
-@Booking
+@e2e
 Funcionalidade: Booking  - GetBookingIds
 
   Cenário: Obter todas as reservas cadastradas

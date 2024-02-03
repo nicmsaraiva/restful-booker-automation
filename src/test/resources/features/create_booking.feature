@@ -1,4 +1,5 @@
 #language: pt
+@e2e
 Funcionalidade: Criar uma nova reserva
 
   Cenário: Criar uma nova reserva com sucesso

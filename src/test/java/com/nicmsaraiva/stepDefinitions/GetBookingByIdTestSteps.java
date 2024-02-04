@@ -7,6 +7,8 @@ import io.cucumber.java.pt.Então;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
+import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.*;
 
@@ -36,15 +38,16 @@ public class GetBookingByIdTestSteps {
 
     @E("os dados da reserva devem incluir:")
     public void os_dados_da_reserva_devem_incluir(io.cucumber.datatable.DataTable dataTable) {
+        Map<String, String > expectedData = dataTable.asMap(String.class, String.class);
         String firstName = response.path("firstname");
         String lastName = response.path("lastname");
         Integer totalPrice = response.path("totalprice");
         Boolean depositPaid = response.path("depositpaid");
 
-        assertEquals("Nick", firstName);
-        assertEquals("Owen", lastName);
-        assertEquals(Integer.valueOf(446), totalPrice);
-        assertFalse(depositPaid);
+        assertEquals(expectedData.get("firstname"), firstName);
+        assertEquals(expectedData.get("lastname"), lastName);
+        assertEquals(Integer.valueOf(expectedData.get("totalprice")), totalPrice);
+        assertEquals(Boolean.parseBoolean(expectedData.get("depositpaid")), depositPaid);
     }
 
     @Dado("que eu faça uma requisição para o endpoint \\/booking\\/id passando um ID sem cadastro")

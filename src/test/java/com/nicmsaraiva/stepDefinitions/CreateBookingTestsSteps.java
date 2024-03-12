@@ -10,31 +10,30 @@ import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertNotNull;
 
 public class CreateBookingTestsSteps {
-    Response response;
-    String jsonBody = "{\"firstname\":\"Nick\",\"lastname\":\"Owen\",\"totalprice\":446,\"depositpaid\":false,\"bookingdates\":{\"checkin\":\"2024-02-10\",\"checkout\":\"2024-03-11\"},\"additionalneeds\":\"Breakfast\"}";
-    String BASE_URL = "https://restful-booker.herokuapp.com/";
+    private Response response;
+    private String jsonBody = "{\"firstname\":\"Nick\",\"lastname\":\"Owen\",\"totalprice\":446,\"depositpaid\":false,\"bookingdates\":{\"checkin\":\"2024-02-10\",\"checkout\":\"2024-03-11\"},\"additionalneeds\":\"Breakfast\"}";
+    private String baseUrl = "https://restful-booker.herokuapp.com/";
 
-
-    @Dado("que eu faça uma requisição POST para o endpoint \\/booking com os dados da reserva")
-    public void que_eu_faça_uma_requisição_post_para_o_endpoint_booking_com_os_dados_da_reserva() {
-        response =
-                given()
-                        .baseUri(BASE_URL)
-                        .basePath("/booking")
-                        .contentType(ContentType.JSON)
-                        .body(jsonBody)
-                        .when()
-                        .post();
+    @Dado("queEuFaçaUmaRequisiçãoPOSTParaOEndpointBookingComOsDadosDaReserva")
+    public void queEuFacaUmaRequisicaoPostParaOEndpointBookingComOsDadosDaReserva() {
+        response = given()
+                .baseUri(baseUrl)
+                .basePath("/booking")
+                .contentType(ContentType.JSON)
+                .body(jsonBody)
+                .when()
+                .post();
     }
-    @Então("deve retornar o status OK")
-    public void deveRetornarOStatusOK() {
+
+    @Então("deveRetornarOStatusOK")
+    public void deveRetornarOStatusOk() {
         response
                 .then()
                 .statusCode(200);
     }
 
-    @E("o ID da reserva deve ser retornado")
-    public void oIDDaReservaDeveSerRetornado() {
+    @E("oIDDaReservaDeveSerRetornado")
+    public void oIdDaReservaDeveSerRetornado() {
         Integer id = response.then().extract().path("bookingid");
         assertNotNull(id);
     }

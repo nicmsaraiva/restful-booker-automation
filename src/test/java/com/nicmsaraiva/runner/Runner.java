@@ -10,7 +10,8 @@ import org.junit.runner.RunWith;
         tags = "@e2e",
         features = "src/test/resources/features",
         glue = "com.nicmsaraiva.stepDefinitions",
-        plugin = {"pretty", "html:target/cucumber-reports"}
+        plugin = {"pretty", "html:target/cucumber-reports"},
+        snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 public class Runner {
 }

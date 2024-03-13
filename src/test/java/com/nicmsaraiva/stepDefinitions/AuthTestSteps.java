@@ -1,5 +1,7 @@
 package com.nicmsaraiva.stepDefinitions;
 
+import com.nicmsaraiva.config.RequestBuilder;
+import com.nicmsaraiva.payloads.Payload;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import io.restassured.RestAssured;
@@ -13,20 +15,14 @@ public class AuthTestSteps {
 
     private Response response;
 
-    @Quando("euFaçoUmaSolicitaçãoPOSTParaAuthComAsCredenciaisVálidas")
+    @Quando("eu faço uma solicitação POST para \\/auth com as credenciais válidas")
     public void euFacoUmaSolicitacaoPostParaAuthComAsCredenciaisValidas() {
-        RestAssured.baseURI = "https://restful-booker.herokuapp.com/auth";
 
-        String payload = "{\"username\": \"admin\", \"password\": \"password123\"}";
-
-        response = given()
-                .contentType(ContentType.JSON)
-                .body(payload)
-                .when()
-                .post();
+        response =
+                RequestBuilder.postRequest(Payload.auth, "/auth");
     }
 
-    @Então("aRespostaDeveConterOStatusCodeOKContendoOTokenOAuthValido")
+    @Então("a resposta deve conter o status code OK contendo o token OAuth valido")
     public void aRespostaDeveConterOStatusCodeOkContendoOTokenOAuthValido() {
         response
                 .then()
@@ -34,6 +30,5 @@ public class AuthTestSteps {
                 .extract()
                 .jsonPath()
                 .get("token");
-        Assert.assertNotNull(response);
     }
 }

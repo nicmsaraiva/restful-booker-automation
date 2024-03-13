@@ -11,7 +11,7 @@ public class GetBookingTestSteps {
     private String baseUrl = "https://restful-booker.herokuapp.com";
     private Response response;
 
-    @Dado("queEuFaçaUmaRequisiçãoGETParaBooking")
+    @Dado("que eu faça uma requsição GET para \\/booking")
     public void queEuFaçaUmaRequisiçãoGetParaBooking() {
         response = given()
                 .baseUri(baseUrl)
@@ -20,7 +20,7 @@ public class GetBookingTestSteps {
                 .get("/booking");
     }
 
-    @Então("aRespostaDeveConterOStatusCodeOKComTodosAsReservasCadastradas")
+    @Então("a resposta deve conter o status code OK com todos as reservas cadastradas")
     public void aRespostaDeveConterOStatusCodeOkComTodosAsReservasCadastradas() {
         response
                 .then()
@@ -28,7 +28,7 @@ public class GetBookingTestSteps {
         System.out.println("Todas as reservas: " + response.asPrettyString());
     }
 
-    @Dado("queEuFaçaUmaRequisiçãoGETParaBookingComOFirstNameELastName")
+    @Dado("que eu faça uma requisição GET para \\\\/booking com o firstName {string} e lastName {string}")
     public void queEuFaçaUmaRequisiçãoGetParaBookingComOFirstNameELastName(String firstName, String lastName) {
         response = given()
                 .baseUri(baseUrl)
@@ -39,7 +39,7 @@ public class GetBookingTestSteps {
                 .get("/booking");
     }
 
-    @Então("aRespostaDeveConterOStatusCodeOKComTodosAsReservasCadastradasComEsseFirstnameELastname")
+    @Então("a resposta deve conter o status code OK com todos as reservas cadastradas com esse firstname e lastname")
     public void aRespostaDeveConterOStatusCodeOkComTodosAsReservasCadastradasComEsseFirstnameELastname() {
         response
                 .then()
@@ -47,7 +47,7 @@ public class GetBookingTestSteps {
         System.out.println("Firstname e lastname: " + response.asPrettyString());
     }
 
-    @Dado("queFaçaUmaRequisiçãoGETParaBookingComADataDeCheckin")
+    @Dado("que faça uma requisição GET para \\\\/booking com a data de checkin {string}")
     public void queFaçaUmaRequisiçãoGetParaBookingComADataDeCheckin(String checkin) {
         response = given()
                 .baseUri(baseUrl)
@@ -57,7 +57,7 @@ public class GetBookingTestSteps {
                 .get("/booking");
     }
 
-    @Então("aRespostaDeveConterOStatusCodeOKComTodasAsReservasComCheckinNessaData")
+    @Então("a resposta deve conter o status code OK com todas as reservas com checkin nessa data")
     public void aRespostaDeveConterOStatusCodeOkComTodasAsReservasComCheckinNessaData() {
         response
                 .then()
@@ -65,7 +65,7 @@ public class GetBookingTestSteps {
         System.out.println("Checkin: " + response.asPrettyString());
     }
 
-    @Dado("queFaçaUmaRequisiçãoGETParaBookingComADataDeCheckout")
+    @Dado("que faça uma requisição GET para \\\\/booking com a data de checkout {string}")
     public void queFaçaUmaRequisiçãoGetParaBookingComADataDeCheckout(String checkout) {
         response = given()
                 .baseUri(baseUrl)
@@ -75,7 +75,7 @@ public class GetBookingTestSteps {
                 .get("/booking");
     }
 
-    @Então("aRespostaDeveConterOStatusCodeOKComTodasAsReservasComCheckoutNessaData")
+    @Então("a resposta deve conter o status code OK com todas as reservas com checkout nessa data")
     public void aRespostaDeveConterOStatusCodeOkComTodasAsReservasComCheckoutNessaData() {
         response
                 .then()
@@ -83,7 +83,7 @@ public class GetBookingTestSteps {
         System.out.println("Checkout: " + response.asPrettyString());
     }
 
-    @Dado("queFaçaUmaRequisiçãoGETParaBookingComADataDeCheckinECheckout")
+    @Dado("que faça uma requisição GET para \\\\/booking com a data de checkin {string} e checkout {string}")
     public void queFaçaUmaRequisiçãoGetParaBookingComADataDeCheckinECheckout(String checkin, String checkout) {
         response = given()
                 .baseUri(baseUrl)
@@ -94,7 +94,7 @@ public class GetBookingTestSteps {
                 .get("/booking");
     }
 
-    @Então("aRespostaDeveConterOStatusCodeOKComTodasAsReservasComCheckinECheckoutNasDatasPassadas")
+    @Então("a resposta deve conter o status code OK com todas as reservas com checkin e checkout nas datas passadas")
     public void aRespostaDeveConterOStatusCodeOkComTodasAsReservasComCheckinECheckoutNasDatasPassadas() {
         response
                 .then()

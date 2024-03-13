@@ -1,4 +1,4 @@
-package com.nicmsaraiva;
+package com.nicmsaraiva.main;
 
 import junit.framework.TestCase;
 

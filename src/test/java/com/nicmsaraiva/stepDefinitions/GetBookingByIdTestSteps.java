@@ -17,8 +17,8 @@ public class GetBookingByIdTestSteps {
     private Response response;
     private String baseUrl = "https://restful-booker.herokuapp.com/";
 
-    @Dado("queEuFaçaUmaRequisiçãoParaOEndpointBookingIdPassandoOIdDaReserva")
-    public void queEuFaçaUmaRequisiçãoParaOEndpointBookingIdPassandoOIdDaReserva() {
+    @Dado("que eu faça uma requisição para o endpoint \\/booking\\/id passando o ID da reserva")
+    public void queEuFacaUmaRequisicaoParaOEndpointBookingIdPassandoOIdDaReserva() {
         String id = createBooking.createNewBooking();
         response = given()
                 .baseUri(baseUrl)
@@ -28,16 +28,16 @@ public class GetBookingByIdTestSteps {
                 .get(id);
     }
 
-    @Então("oSistemaDeveRetornarOStatusOK")
+    @Então("o sistema deve retornar o status OK")
     public void oSistemaDeveRetornarOStatusOk() {
         response
                 .then()
                 .statusCode(200);
     }
 
-    @E("osDadosDaReservaDevemIncluir")
+    @E("os dados da reserva devem incluir:")
     public void osDadosDaReservaDevemIncluir(io.cucumber.datatable.DataTable dataTable) {
-        Map<String, String > expectedData = dataTable.asMap(String.class, String.class);
+        Map<String, String> expectedData = dataTable.asMap(String.class, String.class);
         String firstName = response.path("firstname");
         String lastName = response.path("lastname");
         Integer totalPrice = response.path("totalprice");
@@ -49,8 +49,8 @@ public class GetBookingByIdTestSteps {
         assertEquals(Boolean.parseBoolean(expectedData.get("depositpaid")), depositPaid);
     }
 
-    @Dado("queEuFaçaUmaRequisiçãoParaOEndpointBookingIdPassandoUmIdSemCadastro")
-    public void queEuFaçaUmaRequisiçãoParaOEndpointBookingIdPassandoUmIdSemCadastro() {
+    @Dado("que eu faça uma requisição para o endpoint \\/booking\\/id passando um ID sem cadastro")
+    public void queEuFacaUmaRequisicaoParaOEndpointBookingIdPassandoUmIdSemCadastro() {
         String idInvalid = "213123123";
         response = given()
                 .baseUri(baseUrl)
@@ -60,7 +60,7 @@ public class GetBookingByIdTestSteps {
                 .get(idInvalid);
     }
 
-    @Então("oSistemaDeveRetornarOStatusNotFound")
+    @Então("o sistema deve retornar o status Not Found")
     public void oSistemaDeveRetornarOStatusNotFound() {
         response
                 .then()

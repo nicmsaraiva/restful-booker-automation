@@ -7,7 +7,7 @@ Funcionalidade: Booking  - GetBookingIds
     Então a resposta deve conter o status code OK com todos as reservas cadastradas
 
   Esquema do Cenário: Obter todas as reservas cadastradas com os parâmetros de firstname e lastname enviados
-    Dado que eu faça uma requsição GET para /booking com o firstName <firstName> e lastName <lastName>
+    Dado que eu faça uma requisição GET para /booking com o firstName <firstName> e lastName <lastName>
     Então a resposta deve conter o status code OK com todos as reservas cadastradas com esse firstname e lastname
     Exemplos:
       | firstName | lastName |

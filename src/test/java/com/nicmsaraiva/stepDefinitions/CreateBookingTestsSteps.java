@@ -14,7 +14,7 @@ public class CreateBookingTestsSteps {
     private String jsonBody = "{\"firstname\":\"Nick\",\"lastname\":\"Owen\",\"totalprice\":446,\"depositpaid\":false,\"bookingdates\":{\"checkin\":\"2024-02-10\",\"checkout\":\"2024-03-11\"},\"additionalneeds\":\"Breakfast\"}";
     private String baseUrl = "https://restful-booker.herokuapp.com/";
 
-    @Dado("queEuFaçaUmaRequisiçãoPOSTParaOEndpointBookingComOsDadosDaReserva")
+    @Dado("que eu faça uma requisição POST para o endpoint \\/booking com os dados da reserva")
     public void queEuFacaUmaRequisicaoPostParaOEndpointBookingComOsDadosDaReserva() {
         response = given()
                 .baseUri(baseUrl)
@@ -25,14 +25,14 @@ public class CreateBookingTestsSteps {
                 .post();
     }
 
-    @Então("deveRetornarOStatusOK")
+    @Então("deve retornar o status OK")
     public void deveRetornarOStatusOk() {
         response
                 .then()
                 .statusCode(200);
     }
 
-    @E("oIDDaReservaDeveSerRetornado")
+    @E("o ID da reserva deve ser retornado")
     public void oIdDaReservaDeveSerRetornado() {
         Integer id = response.then().extract().path("bookingid");
         assertNotNull(id);

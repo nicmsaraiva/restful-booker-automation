@@ -17,13 +17,13 @@ public class UpdateBookingTestsSteps {
     private String id;
     private Response response;
 
-    @Dado("queExistaUmaReservaCadastradaNoSistema")
+    @Dado("que exista uma reserva cadastrada no sistema")
     public void queExistaUmaReservaCadastradaNoSistema() {
         id = createBooking.createNewBooking();
         System.out.println("Booking created, id: " + id);
     }
 
-    @Quando("euFaçoUmaSolicitaçãoPUTParaOEndpointBookingIdPassandoOIdDaReservaComOsNovosDadosAlterados")
+    @Quando("eu faço uma solicitação PUT para o endpoint \\/booking\\/id passando o id da reserva com os novos dados alterados")
     public void euFaçoUmaSolicitaçãoPutParaOEndpointBookingIdPassandoOIdDaReservaComOsNovosDadosAlterados() {
         response = given()
                 .baseUri(baseUrl)
@@ -35,14 +35,14 @@ public class UpdateBookingTestsSteps {
                 .put(id);
     }
 
-    @Então("oSistemaDeveRetornarOStatusCodeOK")
+    @Então("o sistema deve retornar o status code OK")
     public void oSistemaDeveRetornarOStatusCodeOk() {
         response
                 .then()
                 .statusCode(200);
     }
 
-    @Então("deveRetornarAReservaComOsDadosAlterados")
+    @Então("deve retornar a reserva com os dados alterados")
     public void deveRetornarAReservaComOsDadosAlterados() {
         String lastname = response.then().extract().path("lastname");
         String totalprice = response.then().extract().path("totalprice").toString();

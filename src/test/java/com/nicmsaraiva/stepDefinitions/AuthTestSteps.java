@@ -1,15 +1,10 @@
 package com.nicmsaraiva.stepDefinitions;
 
 import com.nicmsaraiva.config.RequestBuilder;
-import com.nicmsaraiva.payloads.Payload;
+import com.nicmsaraiva.utils.JsonUtils;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import junit.framework.Assert;
-
-import static io.restassured.RestAssured.given;
 
 public class AuthTestSteps {
 
@@ -17,9 +12,9 @@ public class AuthTestSteps {
 
     @Quando("eu faço uma solicitação POST para \\/auth com as credenciais válidas")
     public void euFacoUmaSolicitacaoPostParaAuthComAsCredenciaisValidas() {
-
         response =
-                RequestBuilder.postRequest(Payload.auth, "/auth");
+                RequestBuilder.
+                        postRequest("auth.json", "/auth");
     }
 
     @Então("a resposta deve conter o status code OK contendo o token OAuth valido")

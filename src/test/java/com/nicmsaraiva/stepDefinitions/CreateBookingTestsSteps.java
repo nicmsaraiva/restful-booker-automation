@@ -1,5 +1,6 @@
 package com.nicmsaraiva.stepDefinitions;
 
+import com.nicmsaraiva.config.RequestBuilder;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Então;
@@ -11,18 +12,11 @@ import static org.junit.Assert.assertNotNull;
 
 public class CreateBookingTestsSteps {
     private Response response;
-    private String jsonBody = "{\"firstname\":\"Nick\",\"lastname\":\"Owen\",\"totalprice\":446,\"depositpaid\":false,\"bookingdates\":{\"checkin\":\"2024-02-10\",\"checkout\":\"2024-03-11\"},\"additionalneeds\":\"Breakfast\"}";
-    private String baseUrl = "https://restful-booker.herokuapp.com/";
 
     @Dado("que eu faça uma requisição POST para o endpoint \\/booking com os dados da reserva")
     public void queEuFacaUmaRequisicaoPostParaOEndpointBookingComOsDadosDaReserva() {
-        response = given()
-                .baseUri(baseUrl)
-                .basePath("/booking")
-                .contentType(ContentType.JSON)
-                .body(jsonBody)
-                .when()
-                .post();
+        response
+                = RequestBuilder.postRequest("create-booking.json", "/booking");
     }
 
     @Então("deve retornar o status OK")

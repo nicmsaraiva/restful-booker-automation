@@ -13,7 +13,7 @@ public class JsonUtils {
         try {
             return readFileToString(new File(filePath), StandardCharsets.UTF_8);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e  + "Erro ao encontrar o arquivo .json");
         }
     }
 }

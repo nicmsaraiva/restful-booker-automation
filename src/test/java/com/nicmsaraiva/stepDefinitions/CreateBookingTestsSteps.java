@@ -4,10 +4,8 @@ import com.nicmsaraiva.config.RequestBuilder;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Então;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertNotNull;
 
 public class CreateBookingTestsSteps {

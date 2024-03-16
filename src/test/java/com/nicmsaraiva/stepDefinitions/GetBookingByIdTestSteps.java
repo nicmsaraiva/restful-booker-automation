@@ -5,7 +5,6 @@ import com.nicmsaraiva.utils.BookingUtils;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
-import io.cucumber.java.pt.Então;
 import io.restassured.response.Response;
 
 import java.util.Map;
@@ -45,7 +44,7 @@ public class GetBookingByIdTestSteps {
                 = RequestBuilder.getRequest("/booking", invalidId);
     }
 
-    @Então("o sistema deve retornar o status Not Found")
+    @Entao("o sistema deve retornar o status Not Found")
     public void oSistemaDeveRetornarOStatusNotFound() {
         response
                 .then()

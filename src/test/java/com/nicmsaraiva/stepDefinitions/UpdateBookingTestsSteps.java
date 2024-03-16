@@ -4,7 +4,6 @@ import com.nicmsaraiva.config.RequestBuilder;
 import com.nicmsaraiva.utils.BookingUtils;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
-import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import io.restassured.response.Response;
 import org.junit.Assert;
@@ -25,7 +24,7 @@ public class UpdateBookingTestsSteps {
                 RequestBuilder.putRequestById("update-booking.json", "/booking", bookingId);
     }
 
-    @Então("o sistema deve retornar o status code OK")
+    @Entao("o sistema deve retornar o status code OK")
     public void oSistemaDeveRetornarOStatusCodeOk() {
         response
                 .then()

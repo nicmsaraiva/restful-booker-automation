@@ -1,8 +1,7 @@
 package com.nicmsaraiva.stepDefinitions;
 
 import com.nicmsaraiva.config.RequestBuilder;
-import com.nicmsaraiva.utils.JsonUtils;
-import io.cucumber.java.pt.Então;
+import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import io.restassured.response.Response;
 
@@ -17,7 +16,7 @@ public class AuthTestSteps {
                         postRequest("auth.json", "/auth");
     }
 
-    @Então("a resposta deve conter o status code OK contendo o token OAuth valido")
+    @Entao("a resposta deve conter o status code OK contendo o token OAuth valido")
     public void aRespostaDeveConterOStatusCodeOkContendoOTokenOAuthValido() {
         response
                 .then()

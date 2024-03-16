@@ -3,7 +3,7 @@ package com.nicmsaraiva.stepDefinitions;
 import com.nicmsaraiva.config.RequestBuilder;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
-import io.cucumber.java.pt.Então;
+import io.cucumber.java.pt.Entao;
 import io.restassured.response.Response;
 
 import static org.junit.Assert.assertNotNull;
@@ -17,7 +17,7 @@ public class CreateBookingTestsSteps {
                 = RequestBuilder.postRequest("create-booking.json", "/booking");
     }
 
-    @Então("deve retornar o status OK")
+    @Entao("deve retornar o status OK")
     public void deveRetornarOStatusOk() {
         response
                 .then()
